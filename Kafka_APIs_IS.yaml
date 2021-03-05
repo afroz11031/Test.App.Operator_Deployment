@@ -27,7 +27,7 @@ spec:
     -  name: ibm-entitlement-key
     containers:
       runtime:
-        image: image-registry.openshift-image-registry.svc:5000/integration/replaceWithBakedImage
+        image: image-registry.openshift-image-registry.svc:5000/cp4i/replaceWithBakedImage
   tracing:
     enabled: true
     namespace: integration
