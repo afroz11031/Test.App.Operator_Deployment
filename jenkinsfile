@@ -6,19 +6,16 @@ node () {
 
 wrap([$class: 'Xvfb']) {
 	stage ('Kafka_APIs_Operator_Deployment - Checkout') {
- 	 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkins-token', url: 'https://github.ibm.com/anand-awasthi/Kafka_APIs_Operator_Deployment.git']]]) 
+ 	 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkins-token', url: 'https://github.com/afroz11031/Test.App.Operator_Deployment.git']]]) 
 	}
-	stage ('Kafka_APIs_Operator_Deployment - Build') {
+	stage ('Test.App.Operator_Deployment - Build') {
  	
-artifactResolver artifacts: [artifact(artifactId: '${ACE_APP1}', extension: 'zip', groupId: 'com.ibm.esb', version: '${ACE_APP1_VERSION}'), artifact(artifactId: '${ACE_APP2}', extension: 'zip', groupId: 'com.ibm.esb', version: '${ACE_APP2_VERSION}')], targetDirectory: '/var/icp-builds/${ACE_APP1}'
+artifactResolver artifacts: [artifact(artifactId: '${ACE_APP1}', extension: 'zip', groupId: 'com.ibm.esb', version: '${ACE_APP1_VERSION}'), targetDirectory: '/var/icp-builds/${ACE_APP1}'
 sh label: '', script: '''#!/bin/sh
 cd /var/icp-builds/${ACE_APP1}
 unzip ${ACE_APP1}-${ACE_APP1_VERSION}.zip
 chmod 777 *
 cp DEV_${ACE_APP1_VERSION}.bar /var/lib/jenkins/jobs/${JOB_NAME}/workspace
-unzip ${ACE_APP2}-${ACE_APP2_VERSION}.zip
-chmod 777 *
-cp DEV_${ACE_APP2_VERSION}.bar /var/lib/jenkins/jobs/${JOB_NAME}/workspace
 cd ${WORKSPACE}
 oc login ${OCP_API_URL} -u ${OCP_USER} -p ${OCP_PASSWORD} --insecure-skip-tls-verify
 oc project ${Namespace}
