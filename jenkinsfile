@@ -10,7 +10,7 @@ wrap([$class: 'Xvfb']) {
 	}
 	stage ('Test.App.Operator_Deployment - Build') {
  	
-artifactResolver artifacts: [artifact(artifactId: '${ACE_APP1}', extension: 'zip', groupId: 'repository.releases.com.ibm.esb', version: '${ACE_APP1_VERSION}')], targetDirectory: '/var/icp-builds/${ACE_APP1}'
+artifactResolver artifacts: [artifact(artifactId: '${ACE_APP1}', extension: 'zip', groupId: 'com.ibm.esb', version: '${ACE_APP1_VERSION}')], targetDirectory: '/var/icp-builds/${ACE_APP1}'
 sh label: '', script: '''#!/bin/sh
 cd /var/icp-builds/${ACE_APP1}
 unzip ${ACE_APP1}-${ACE_APP1_VERSION}.zip
