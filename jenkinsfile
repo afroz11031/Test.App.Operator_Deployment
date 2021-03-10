@@ -5,10 +5,10 @@ timestamps {
 node () {
 
 wrap([$class: 'Xvfb']) {
-	stage ('Test.App.CP4I.Operator_Deployment - Checkout') {
+	stage ('Test.App.Operator_Deployment - Checkout') {
  	 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkins-token', url: 'https://github.com/afroz11031/Test.App.Operator_Deployment.git']]]) 
 	}
-	stage ('Test.App.CP4I.Operator_Deployment - Build') {
+	stage ('Test.App.Operator_Deployment - Build') {
 artifactResolver artifacts: [artifact(artifactId: '${ACE_APP1}', extension: 'zip', groupId: 'com.ibm.esb', version: '${ACE_APP1_VERSION}')], targetDirectory: '/var/icbp-builds/${ACE_APP1}'
 
 sh label: '', script: '''#!/bin/sh
