@@ -9,7 +9,7 @@ wrap([$class: 'Xvfb']) {
  	 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkins-token', url: 'https://github.com/afroz11031/Test.App.Operator_Deployment.git']]]) 
 	}
 	stage ('Test.App.Operator_Deployment - Build') {
-artifactResolver artifacts: [artifact(artifactId: '${ACE_APP1}', extension: 'zip', groupId: 'com.ibm.esb', targetFileName: '${ACE_APP1}.zip', version: '${ACE_APP1_VERSION}')], targetDirectory: '/var/icbp-builds/${ACE_APP1}'
+artifactResolver artifacts: [artifact(artifactId: '${ACE_APP1}', extension: 'zip', groupId: 'com.ibm.esb', version: '${ACE_APP1_VERSION}')], targetDirectory: '/var/icbp-builds/${ACE_APP1}'
 
 sh label: '', script: '''#!/bin/sh
 cd /var/icp-builds/${ACE_APP1}
