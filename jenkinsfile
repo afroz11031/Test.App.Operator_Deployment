@@ -9,8 +9,8 @@ wrap([$class: 'Xvfb']) {
  	 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkins-token', url: 'https://github.com/afroz11031/Test.App.Operator_Deployment.git']]]) 
 	}
 	stage ('Test.App.Operator_Deployment - Build') {
-artifactResolver artifacts: [artifact(artifactId: '${ACE_APP1}', extension: 'zip', groupId: 'com.ibm.esb', version: '${ACE_APP1_VERSION}')], targetDirectory: '/var/icp-builds/${ACE_APP1}'
-wget http://169.38.121.29:8082/repository/releases/com/ibm/esb/${ACE_APP1_VERSION}/${ACE_APP1}-${ACE_APP1_VERSION}.zip --user $username --password $paswd > /var/icp-builds/${ACE_APP1}
+artifactResolver artifacts: [artifact(artifactId: '${ACE_APP1}', extension: 'zip', groupId: 'com.ibm.esb', version: '${ACE_APP1_VERSION}')], targetDirectory: '/var/icbp-builds/${ACE_APP1}'
+wget http://169.38.121.29:8082/repository/releases/com/ibm/esb/${ACE_APP1_VERSION}/${ACE_APP1}-${ACE_APP1_VERSION}.zip --user $username --password $passwd > /var/icp-builds/${ACE_APP1}
 sh label: '', script: '''#!/bin/sh
 cd /var/icp-builds/${ACE_APP1}
 unzip ${ACE_APP1}-${ACE_APP1_VERSION}.zip
