@@ -12,8 +12,7 @@ wrap([$class: 'Xvfb']) {
 
 sh label: '', script: '''#!/bin/sh
 
-mkdir -p /var/icp-builds/${ACE_APP1}
-wget http://169.38.121.29:8082/repository/releases/com/ibm/esb/${ACE_APP1}/${ACE_APP1_VERSION}/${ACE_APP1}-${ACE_APP1_VERSION}.zip --user $username --password $passwd > /var/icp-builds/${ACE_APP1}
+wget http://169.38.121.29:8082/repository/releases/com/ibm/esb/${ACE_APP1}/${ACE_APP1_VERSION}/${ACE_APP1}-${ACE_APP1_VERSION}.zip --user $username --password $passwd -P /var/icp-builds/${ACE_APP1}
 cd /var/icp-builds/${ACE_APP1}
 unzip ${ACE_APP1}-${ACE_APP1_VERSION}.zip
 chmod 777 *
