@@ -7,7 +7,7 @@ spec:
   designerFlowsOperationMode: disabled
   license:
     accept: true
-    license: L-AMYG-BQ2E4U
+    license: L-APEH-BPUCJK
     use: CloudPakForIntegrationProduction
   replicas: 1
   router:
@@ -23,7 +23,7 @@ spec:
     - es-cert.p12
   pod:
     imagePullSecrets:
-    -  name: deployer-dockercfg-hv62v
+    -  name: deployer-dockercfg-kwx5n
     -  name: ibm-entitlement-key
     containers:
       runtime:
