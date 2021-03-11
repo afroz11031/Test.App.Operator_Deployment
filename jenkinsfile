@@ -23,7 +23,7 @@ oc project ${Namespace}
 docker login ${OCP_Registry_External_URL} -u $(oc whoami) -p $(oc whoami -t)
 #docker build -t ${imagename}:${BUILD_NUMBER} .
 #docker tag ${imagename}:${BUILD_NUMBER} ${OCP_Registry_External_URL}/${Namespace}/${imagename}:${tag}
-docker build -t ${imagename}:${BUILD_NUMBER} ${OCP_Registry_External_URL}/${Namespace}/${imagename}:${tag} .
+docker build -t ${OCP_Registry_External_URL}/${Namespace}/${imagename}:${tag} .
 docker push ${OCP_Registry_External_URL}/${Namespace}/${imagename}:${tag}
 #Create the IntegrationServer Configurations from CR yamls
 chmod 777 -R ConfigurationInputs
