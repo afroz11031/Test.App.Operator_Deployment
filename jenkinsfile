@@ -41,8 +41,9 @@ serverconf=$(base64 -w 0 ConfigurationInputs/server.conf.yaml)
 sed -e "s/replace-with-namespace/${Namespace}/" -e "s~replace-with-serverconf-bas64~${serverconf}~" ConfigurationResources/server.conf.yaml > server.conf-temp.yaml 
 # Deploy the Integration Server
 sed -e "s/replaceIntServerName/${IntegrationServer}/" -e "s/replaceNamespace/${Namespace}/" -e "s/replaceWithBakedImage/${imagename}:${tag}/" Kafka_APIs_IS.yaml > Kafka_APIs-temp.yaml
-cp Kafka_APIs-temp.yaml > /tmp/Kafka_APIs-temp.yaml
+cp Kafka_APIs-temp.yaml  /tmp/Kafka_APIs-temp.yaml
 if test ${DeploymentType} = \'install\'; then
+echo ""skipping....."
 #oc apply -f setdbparms-temp.yaml 
 #oc apply -f truststore-temp.yaml
 #oc apply -f policyProject-temp.yaml
