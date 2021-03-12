@@ -1,0 +1,29 @@
+# ACE Integration Server configuration file
+#
+Defaults:
+  #defaultApplication: ''            # Name a default application under which independent resources will be placed
+  #policyProject: 'DefaultPolicies'  # Name of the Policy project that will be used for unqualified Policy references, default is 'DefaultPolicies'
+  
+  Credentials:
+    # Names a default credential name to be used when a more specific credential is not available for the credential type.
+    #httpproxy: ''
+    jdbc: 'mydbidentity'
+    #kafka: ''
+    #kerberos: ''
+    #ldap: ''
+    #odbc: ''
+    #mq: ''
+    #wsrr: ''
+
+ServerCredentials:
+  # Optionally define credentials for use by the Integration Server.
+  # Customize the CredentialType section for each type of credential that you want to create credentials for.
+  # You must define each CredentialType at most once.
+  # Each CredentialName must be unique within the CredentialType.
+  # Each CredentialType has a set of allowable properties which are a subset of username, password, passphrase, apiKey, clientId, clientSecret, sshIdentityFile.
+  # For full details of allowed CredentialTypes and their properties, refer to the Knowledge Center.
+  # For example:
+   jdbc:
+     USERDB:
+       username: 'wtg32022'
+       password: 'fwczksxt89mgsv-7'
