@@ -28,8 +28,8 @@ docker push ${OCP_Registry_External_URL}/${Namespace}/${imagename}:${tag}
 chmod 777 -R ConfigurationInputs
 chmod 777 -R ConfigurationResources
 # Create CR for setdbparms
-#setdbparms=$(base64 -w 0 ConfigurationInputs/setdbparms.txt) 
-#sed -e "s/replace-with-namespace/${Namespace}/" -e "s~replace-with-setdbparms-bas64~${setdbparms}~" ConfigurationResources/setdbparms.yaml > setdbparms-temp.yaml 
+#setdbparms=$(base64 -w 0 ConfigurationInputs/setdbparms1.txt) 
+#sed -e "s/replace-with-namespace/${Namespace}/" -e "s~replace-with-setdbparms-bas64~${setdbparms}~" ConfigurationResources/setdbparms1.yaml > setdbparms1-temp.yaml 
 # Create CR for TrustStore
 #truststore=$(base64 -w 0 ConfigurationInputs/es-cert.p12)
 #sed -e "s/replace-with-namespace/${Namespace}/" -e "s~replace-with-truststore-bas64~${truststore}~" ConfigurationResources/truststore.yaml > truststore-temp.yaml 
@@ -37,8 +37,8 @@ chmod 777 -R ConfigurationResources
 #policy=$(base64 -w 0 ConfigurationInputs/kafka_policy.zip)
 #sed -e "s/replace-with-namespace/${Namespace}/" -e "s~replace-with-policy-base64~${policy}~" ConfigurationResources/policyProject.yaml > policyProject-temp.yaml 
 # Create CR for server configuration
-serverconf=$(base64 -w 0 ConfigurationInputs/server.conf.yaml)
-sed -e "s/replace-with-namespace/${Namespace}/" -e "s~replace-with-serverconf-bas64~${serverconf}~" ConfigurationResources/server.conf.yaml > server.conf-temp.yaml 
+serverconf=$(base64 -w 0 ConfigurationInputs/server.conf1.yaml)
+sed -e "s/replace-with-namespace/${Namespace}/" -e "s~replace-with-serverconf-bas64~${serverconf}~" ConfigurationResources/server.conf1.yaml > server.conf1-temp.yaml 
 # Deploy the Integration Server
 sed -e "s/replaceIntServerName/${IntegrationServer}/" -e "s/replaceNamespace/${Namespace}/" -e "s/replaceWithBakedImage/${imagename}:${tag}/" Kafka_APIs_IS.yaml > Kafka_APIs-temp.yaml
 cp Kafka_APIs-temp.yaml  /tmp/Kafka_APIs-temp.yaml
