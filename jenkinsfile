@@ -28,8 +28,8 @@ docker push ${OCP_Registry_External_URL}/${Namespace}/${imagename}:${tag}
 chmod 777 -R ConfigurationInputs
 chmod 777 -R ConfigurationResources
 # Create CR for setdbparms
-#setdbparms=$(base64 -w 0 ConfigurationInputs/setdbparms1.txt) 
-#sed -e "s/replace-with-namespace/${Namespace}/" -e "s~replace-with-setdbparms-bas64~${setdbparms}~" ConfigurationResources/setdbparms1.yaml > setdbparms1-temp.yaml 
+setdbparms=$(base64 -w 0 ConfigurationInputs/setdbparms1.txt) 
+sed -e "s/replace-with-namespace/${Namespace}/" -e "s~replace-with-setdbparms-bas64~${setdbparms}~" ConfigurationResources/setdbparms1.yaml > setdbparms1-temp.yaml 
 # Create CR for TrustStore
 #truststore=$(base64 -w 0 ConfigurationInputs/es-cert.p12)
 #sed -e "s/replace-with-namespace/${Namespace}/" -e "s~replace-with-truststore-bas64~${truststore}~" ConfigurationResources/truststore.yaml > truststore-temp.yaml 
