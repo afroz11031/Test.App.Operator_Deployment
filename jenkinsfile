@@ -19,10 +19,12 @@ cp DEV_${ACE_APP1_VERSION}.bar /var/lib/jenkins/jobs/${JOB_NAME}/workspace
 cd ${WORKSPACE}
 oc login ${OCP_API_URL} -u ${OCP_USER} -p ${OCP_PASSWORD} --insecure-skip-tls-verify
 oc project ${Namespace}
-docker login ${OCP_Registry_External_URL} -u $(oc whoami) -p $(oc whoami -t)
+#docker login ${OCP_Registry_External_URL} -u $(oc whoami) -p $(oc whoami -t)
+docker login cp.icr.io -u cp -p ${entitlement_key}
 #docker build -t ${imagename}:${BUILD_NUMBER} .
 #docker tag ${imagename}:${BUILD_NUMBER} ${OCP_Registry_External_URL}/${Namespace}/${imagename}:${tag}
 docker build -t ${OCP_Registry_External_URL}/${Namespace}/${imagename}:${tag} .
+docker login ${OCP_Registry_External_URL} -u $(oc whoami) -p $(oc whoami -t)
 docker push ${OCP_Registry_External_URL}/${Namespace}/${imagename}:${tag}
 #Create the IntegrationServer Configurations from CR yamls
 chmod 777 -R ConfigurationInputs
