@@ -19,7 +19,7 @@ spec:
   configurations: []
   pod:
     imagePullSecrets:
-    -  name: deployer-dockercfg-kwx5n
+    -  name: deployer-dockercfg-pq8fm
     -  name: ibm-entitlement-key
     containers:
       runtime:
