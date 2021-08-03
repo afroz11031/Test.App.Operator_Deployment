@@ -37,8 +37,8 @@ chmod 777 -R ConfigurationResources
 #policy=$(base64 -w 0 ConfigurationInputs/kafka_policy.zip)
 #sed -e "s/replace-with-namespace/${Namespace}/" -e "s~replace-with-policy-base64~${policy}~" ConfigurationResources/policyProject.yaml > policyProject-temp.yaml 
 # Create CR for server configuration
-serverconf=$(base64 -w 0 ConfigurationInputs/server.conf1.yaml)
-sed -e "s/replace-with-namespace/${Namespace}/" -e "s~replace-with-serverconf-bas64~${serverconf}~" ConfigurationResources/server.conf1.yaml > server.conf1-temp.yaml 
+#serverconf=$(base64 -w 0 ConfigurationInputs/server.conf1.yaml)
+#sed -e "s/replace-with-namespace/${Namespace}/" -e "s~replace-with-serverconf-bas64~${serverconf}~" ConfigurationResources/server.conf1.yaml > server.conf1-temp.yaml 
 # Deploy the Integration Server
 sed -e "s/replaceIntServerName/${IntegrationServer}/" -e "s/replaceNamespace/${Namespace}/" -e "s/replaceWithBakedImage/${imagename}:${tag}/" Kafka_APIs_IS.yaml > Kafka_APIs-temp.yaml
 cp Kafka_APIs-temp.yaml  /tmp/Kafka_APIs-temp.yaml
@@ -46,7 +46,7 @@ if test ${DeploymentType} = \'install\'; then
 #oc apply -f setdbparms1-temp.yaml 
 #oc apply -f truststore-temp.yaml
 #oc apply -f policyProject-temp.yaml
-oc apply -f server.conf1-temp.yaml 
+#oc apply -f server.conf1-temp.yaml 
 oc apply -f Kafka_APIs-temp.yaml
 else
 #oc replace -f setdbparms-temp.yaml 
