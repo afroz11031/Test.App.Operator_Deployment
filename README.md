@@ -1,10 +1,10 @@
-# Kafka_APIs_Operator_Deployment
+# AppConnect_App_Operator_Deployment
 This sample deployment project performs below tasks:
   - Create IntegrationServer Configuration CR for Truststore
   - Create IntegrationServer Configuration CR for Setdbparms
   - Create IntegrationServer Configuration CR for Policy project ( In this example Kafka Policy)
   - Create IntegrationServer Configuration CR for Server.conf.yaml
-  - Reference these CRs into the IntegrationServer CRD (Kafka_APIs.yaml) and deploy it
+  - Reference these CRs into the IntegrationServer CRD (AppConnect_APIs.yaml) and deploy it
 
 The ConfigurationInputs folder contains the below files:
 # ConfigurationInputs/es-cert.p12
@@ -33,7 +33,7 @@ Below files inside ConfigurationResources folder are the CRDs for Truststore, Po
 - truststore.yaml
 
 Below file is the CRD for IntegrationServer and referenced to the above four CRs:
-- Kafka_APIs_IS.yaml
+- IS.yaml
 
 The jenkinsfile performs below steps:
 - Checks-out the project
