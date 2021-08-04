@@ -21,7 +21,7 @@ oc login ${OCP_API_URL} -u ${OCP_USER} -p ${OCP_PASSWORD} --insecure-skip-tls-ve
 oc project ${Namespace}
 
 #****Login to IBM Container Registry****
-docker login cp.icr.io -u cp -p ${entitlement_key}
+docker login cp.icr.io -u cp -p ${Entitlement_Key}
 
 docker build -t ${OCP_Registry_External_URL}/${Namespace}/${imagename}:${tag} .
 #****Login to OCP registry****
