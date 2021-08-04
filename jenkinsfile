@@ -44,20 +44,20 @@ chmod 777 -R ConfigurationResources
 #serverconf=$(base64 -w 0 ConfigurationInputs/server.conf1.yaml)
 #sed -e "s/replace-with-namespace/${Namespace}/" -e "s~replace-with-serverconf-bas64~${serverconf}~" ConfigurationResources/server.conf1.yaml > server.conf1-temp.yaml 
 # Deploy the Integration Server
-sed -e "s/replaceIntServerName/${IntegrationServer}/" -e "s/replaceNamespace/${Namespace}/" -e "s/replaceWithBakedImage/${imagename}:${tag}/" Kafka_APIs_IS.yaml > Kafka_APIs-temp.yaml
-cp Kafka_APIs-temp.yaml  /tmp/Kafka_APIs-temp.yaml
+sed -e "s/replaceIntServerName/${IntegrationServer}/" -e "s/replaceNamespace/${Namespace}/" -e "s/replaceWithBakedImage/${imagename}:${tag}/" IS.yaml > IS-temp.yaml
+cp IS-temp.yaml  /tmp/IS-temp.yaml
 if test ${DeploymentType} = \'install\'; then
 #oc apply -f setdbparms1-temp.yaml 
 #oc apply -f truststore-temp.yaml
 #oc apply -f policyProject-temp.yaml
 #oc apply -f server.conf1-temp.yaml 
-oc apply -f Kafka_APIs-temp.yaml
+oc apply -f IS-temp.yaml
 else
 #oc replace -f setdbparms-temp.yaml 
 #oc replace -f truststore-temp.yaml
 #oc replace -f policyProject-temp.yaml
 #oc replace -f server.conf-temp.yaml 
-oc replace -f Kafka_APIs-temp.yaml
+oc replace -f IS-temp.yaml
 fi
 cd /var/icp-builds
 rm -rf ${ACE_APP1}
